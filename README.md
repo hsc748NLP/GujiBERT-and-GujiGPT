@@ -1,5 +1,9 @@
 # GujiBERT-and-GujiGPT
 
+## Pretrain-models
+[GujiBEERT](https://huggingface.co/hsc748NLP/GujiBERT)
+[GujiGPT](https://huggingface.co/hsc748NLP/GujiGPT)
+
 ## Baselines
 [SikuBERT](https://github.com/hsc748NLP/SikuBERT-for-digital-humanities-and-classical-Chinese-information-processing)
 
