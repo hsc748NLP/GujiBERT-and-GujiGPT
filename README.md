@@ -36,7 +36,7 @@ All ancient classic corpus of Yin Zhige
 |  pretrained models  | BLEU-1 | BLEU-2 | BLEU-3 | BLEU-4 |
 | :----------------: | :----------: | :---------: | :---------: | :---------: |
 | SikuGPT | 0.765 | 0.593 | 0.488 | 0.413 |
-| GujiGPT | 9.765 | 0.593 | 0.489 | 0.413 |
+| GujiGPT | 0.765 | 0.593 | 0.489 | 0.413 |
 
 ## How to use
 
