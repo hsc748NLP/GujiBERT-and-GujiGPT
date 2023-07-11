@@ -18,6 +18,8 @@ With the rapid development of artificial intelligence, large language models are
 ## Baselines
 [SikuBERT](https://github.com/hsc748NLP/SikuBERT-for-digital-humanities-and-classical-Chinese-information-processing)
 
+[SikuRoBERTa](https://github.com/hsc748NLP/SikuBERT-for-digital-humanities-and-classical-Chinese-information-processing)
+
 [SikuGPT](https://github.com/hsc748NLP/SikuGPT)
 
 ## Data
