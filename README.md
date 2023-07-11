@@ -3,9 +3,17 @@
 With the rapid development of artificial intelligence, large language models are increasingly playing a key role. The combination of natural language processing comprehensive and generative language models such as BERT and GPT with datasets of vertical domains has generated numerous domainized language models. The domainized language models have greatly contributed to the development of intelligence in the corresponding domains, such as mathematics, chemistry, finance, law, and so on. As the main carrier of Chinese civilization, Chinese classics have a large span of history in time, massive data scale, and multiple categories in data types. The above characteristics of Chinese classics data have the basis for constructing a domainized Pedestal Language Model (DPLM). Some studies have constructed the corresponding domainized base language model for Chinese classics, but the constructed model has the following shortcomings. Firstly, some models use relatively small datasets and are either simplified or traditional in terms of characters, without considering the coexistence of simplified and traditional characters. Secondly, the constructed models are mainly based on the understanding of natural language processing and lack the construction of natural language processing generative models. Finally, the determination and validation of the model performance is relatively single, not comprehensive and lacks validation on public datasets. Against this background, based on the currently available datasets of ancient books, taking into account both traditional and simplified character sets, and oriented to the two tasks of comprehension and generation of natural language processing, and with the goal of intelligent information processing of ancient books, this paper constructs the base language models for comprehension and generation of natural language processing of Chinese classics, which are named GujiBERT and GujiGPT.
 
 ## Pretrain-models
-[GujiBERT](https://huggingface.co/hsc748NLP/GujiBERT)
+[GujiBERT_fan](https://huggingface.co/hsc748NLP/GujiBERT_fan)
+[GujiRoBERTa_fan](https://huggingface.co/hsc748NLP/GujiRoBERTa_fan)
+[GujiGPT_fan](https://huggingface.co/hsc748NLP/GujiGPT_fan)
 
-[GujiGPT](https://huggingface.co/hsc748NLP/GujiGPT)
+[GujiBERT_jian](https://huggingface.co/hsc748NLP/GujiBERT_jian)
+[GujiRoBERTa_jian](https://huggingface.co/hsc748NLP/GujiRoBERTa_jian)
+[GujiGPT_jian](https://huggingface.co/hsc748NLP/GujiGPT_jian)
+
+[GujiBERT_jian_fan](https://huggingface.co/hsc748NLP/GujiBERT_jian_fan)
+[GujiRoBERTa_jian_fan](https://huggingface.co/hsc748NLP/GujiRoBERTa_jian_fan)
+[GujiGPT_jian_fan](https://huggingface.co/hsc748NLP/GujiGPT_jian_fan)
 
 ## Baselines
 [SikuBERT](https://github.com/hsc748NLP/SikuBERT-for-digital-humanities-and-classical-Chinese-information-processing)
