@@ -89,6 +89,10 @@ In this study, we utilize the corpus of the Twenty-Four Histories to fine-tune t
 | simplified + traditional | Chinese-RoBERTa-wwm-ext | 79.98 | 80.61 | 80.29 | 
 | simplified + traditional | RoBERTa-classical-Chinese-base-char | 87.65 | 88.04 | 87.85 | 
 
+### Automatic Punctuation
+Automatic punctuation of ancient Chinese refers to the use of Chinese current “Punctuation Usage” (GB/T 15834-2011) specification for the original ancient texts without punctuation automatically add punctuation, not only makes the processed ancient texts more in line with the reading habits of modern people, but also is the basis for the realization of the fine-grained processing of ancient texts. In this section, we use the twenty-five pre-Qin canonical texts that have been manually labeled and proofread by our group for automatic punctuation experiments. In order to fully improve the generalization ability of the model, this study selects 189798 corpora with sufficient length for training to ensure that the model can learn richer semantic representations. In the data processing stage, this study divides the dataset according to the ratio of 8:1:1, and after removing all the punctuation in the dataset, the data are processed using the BIO annotation format to ensure that the label corresponding to the previous character at the punctuation position in the original text is the punctuation label in the label set.
+
+
 
 ## How to use
 
