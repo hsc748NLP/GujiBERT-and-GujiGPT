@@ -15,15 +15,9 @@ With the rapid development of artificial intelligence, large language models are
 [GujiRoBERTa_jian_fan](https://huggingface.co/hsc748NLP/GujiRoBERTa_jian_fan)
 [GujiGPT_jian_fan](https://huggingface.co/hsc748NLP/GujiGPT_jian_fan)
 
-## Baselines
-[SikuBERT](https://github.com/hsc748NLP/SikuBERT-for-digital-humanities-and-classical-Chinese-information-processing)
-
-[SikuRoBERTa](https://github.com/hsc748NLP/SikuBERT-for-digital-humanities-and-classical-Chinese-information-processing)
-
-[SikuGPT](https://github.com/hsc748NLP/SikuGPT)
-
 ## Data and Models
 The data used in this model training comes from the website of Daizhige , which contains about 1.7 billion words of classical texts, and divides them into ten categories, such as Confucianism, Buddhism, History, and so on, with some of them in simplified Chinese characters and the others in traditional Chinese characters. In this study, the traditional and simplified data in the Daizhige corpus were firstly converted into traditional and simplified Chinese characters respectively, and this process was carried out by using the Chinese Character Simplified-Traditional Conversion Text Intelligence System  developed by Xiamen University, which provides three forms of online conversion, Word plug-in, and stand-alone software to realize the conversion of traditional and simplified Chinese characters, and in view of the large scale of the data, the data were converted into traditional and simplified Chinese characters by using the stand-alone software in the present study. Secondly, the converted data were cleaned to remove special symbols and invalid characters. Finally, the traditional and simplified data of Daizhige corpus are obtained respectively, and the two data are merged to form the mixed data of traditional and simplified, and the model is trained using the traditional, simplified and mixed data respectively.
+
 In terms of baseline model selection, different baseline models are chosen according to the training corpus and pre-training tasks. Specifically, SikuBERT, SikuRoBERTa, and SikuGPT are used as baseline models for the traditional Chinese classics corpus and the mixed traditional and simple classics corpus, respectively, which are all trained by our group based on the traditional Chinese corpus of the Siku Quanshu. For the Simplified Chinese classics corpus, BERT-base-Chinese , Chinese-Roberta-wwm-ext  and GPT2-Chinese-cluecorpussmall  are used as baseline models.
 
 
