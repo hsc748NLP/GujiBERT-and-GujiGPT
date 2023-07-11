@@ -91,8 +91,37 @@ In this study, we utilize the corpus of the Twenty-Four Histories to fine-tune t
 
 ### Automatic Punctuation
 Automatic punctuation of ancient Chinese refers to the use of Chinese current “Punctuation Usage” (GB/T 15834-2011) specification for the original ancient texts without punctuation automatically add punctuation, not only makes the processed ancient texts more in line with the reading habits of modern people, but also is the basis for the realization of the fine-grained processing of ancient texts. In this section, we use the twenty-five pre-Qin canonical texts that have been manually labeled and proofread by our group for automatic punctuation experiments. In order to fully improve the generalization ability of the model, this study selects 189798 corpora with sufficient length for training to ensure that the model can learn richer semantic representations. In the data processing stage, this study divides the dataset according to the ratio of 8:1:1, and after removing all the punctuation in the dataset, the data are processed using the BIO annotation format to ensure that the label corresponding to the previous character at the punctuation position in the original text is the punctuation label in the label set.
+On the task of automatic punctuation of Chinese classics, all the ancient Chinese base models have gained advantages over the generalized models, among which, on the task of punctuation of traditional ancient Chinese, the performance of GujiBERT_fan and GujiRoBERTa_fan models we developed is significantly better than that of the “Siku” series models. Among them, GujiRoBERTa_fan achieves the best performance with the highest F1 value of 76.00%. On the task of automatic punctuation of simplified text, GuwenBERT achieves the best performance with the highest F1 value of 77.19%, which is slightly higher than that of “Guji” series model, and this difference may be related to the word list and the training corpus. The GujiRoBERTa_jian_fan model achieves the best performance on the mixed corpus of traditional Chinese and simplified Chinese, with the highest F1 value of 78.53%, and the RoBERTa-classical-Chinese-base-char model achieves the second best performance, with the highest F1 value of 78.47%, due to the fact that it is trained from the GuwenBERT model. GuwenBERT model, it also inherits the efficient automatic punctuation of GuwenBERT model. Taking the above tasks together, we find that the GuwenBERT family of models may be more suitable for handling automatic sentence breaking and punctuation tasks, probably because GuwenBERT streamlines the vocabulary lists and retrains the word embedding representations.
+| training corpus | models | P(%) | R(%) | F1(%) |
+| :----------------: | :----------: | :---------: | :---------: | :---------: |
+| traditional | GujiBERT_fan | 75.96 | 76.93 | 76.00 | 
+| traditional | GujiRoBERTa_fan | 76.06 | 77.03 | 76.09 | 
+| traditional | SikuBERT | 75.68 | 76.60 | 75.69 | 
+| traditional | SikuRoBERTa | 75.73 | 76.97 | 75.91 | 
+| traditional | BERT-base-Chinese | 73.99 | 74.85 | 73.91 | 
+| traditional | Chinese-RoBERTa-wwm-ext | 73.94 | 74.59 | 73.71 | 
+| simplified | GujiBERT_jian | 75.76 | 76.51 | 75.68 | 
+| simplified | GujiRoBERTa_jian | 75.35 | 76.30 | 75.42 | 
+| simplified | BERT-base-Chinese | 74.50	75.07	74.20 | 
+| simplified | Chinese-RoBERTa-wwm-ext | 74.47 | 75.00 | 74.17 | 
+| simplified | GuwenBERT | 77.02 | 78.45 | 77.19 | 
+| simplified + traditional | GujiBERT_jian_fan | 77.53 | 78.32 | 77.92 | 
+| simplified + traditional | GujiRoBERTa_jian_fan | 78.14 | 78.93 | 78.53 | 
+| simplified + traditional | BERT-base-Chinese | 75.69 | 75.15 | 75.42 | 
+| simplified + traditional | Chinese-RoBERTa-wwm-ext | 75.93 | 75.84 | 75.88 | 
+| simplified + traditional | RoBERTa-classical-Chinese-base-char | 78.06 | 78.89 | 78.47 | 
 
-
+### Machine Translation
+Natural Language Generation (NLG) task is an important branch in the field of intelligent information processing, covering subtasks such as text summarization, machine translation, dialog systems and so on. In this study, in order to investigate the specific performance of base models on the natural language generation task, the models are evaluated using the machine translation subtask. In this evaluation task, the book “Twenty-four Histories in Full Translation”, a key book of the National “Tenth Five-Year” Publishing Plan, was chosen as the data source. One million sets of roughly processed parallel corpus of the Twenty-four Histories were obtained through the Aligner tool and several rounds of manual proofreading. 
+On the basis of completing the corpus construction, in order to accurately assess the actual translation ability (text generation ability) from ancient Chinese to modern Chinese of each model, the study adopted BLEU as the main evaluation index of the experiment. All models used the same experimental configuration information, and after five rounds of training, the evaluation results of the generated content of each model are shown in follow.
+| training corpus | models | BLEU1 | BLEU2 | BLEU3 | BLEU4 |
+| :----------------: | :----------: | :---------: | :---------: | :---------: | :---------: |
+| traditional | SikuGPT | 0.714 | 0.505 | 0.383 | 0.297 | 
+| traditional | GujiGPT_fan | 0.715 | 0.507 | 0.385 | 0.299 | 
+| traditional | GPT2-base-Chinese | 0.715 | 0.507 | 0.385 | 0.299 | 
+| simplified | GPT2-Chinese-ancient | 0.712 | 0.503 | 0.381 | 0.295 | 
+| simplified | GujiGPT_jian | 0.715 | 0.505 | 0.383 | 0.298 | 
+| simplified + traditional | GujiGPT_jian_fan | 0.715 | 0.507 | 0.385 | 0.299 | 
 
 ## How to use
 
