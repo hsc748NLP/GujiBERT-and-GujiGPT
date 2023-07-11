@@ -22,7 +22,30 @@ In terms of baseline model selection, different baseline models are chosen accor
 
 
 ## Downstream tasks
-### Part-of-speech tagging
+### Named Entity Identification
+Through the recognition of words with specific meanings, such as human-named entities, place-named entities and time-word entities in ancient books, a finer-grained slicing of the ancient classics can be realized, which in turn helps the construction of the knowledge graph of classical texts and the application of classical text retrieval and translation.
+
+In this study, we utilize the named entity recognition corpus of the Shiji to fine-tune the training of each base model, and on the basis of this, we realize the model construction and testing for the named entity recognition task. The Shiji is a detailed narrative, in which the characters, places and times recorded have great research value for named entity recognition in the field of ancient books. In this study, the corpus is divided into training set and test set according to the ratio of 9:1. The test results are shown in Table 1, from which it can be seen that the “Siku” and “Guji” series models developed by our group are better in the task of recognizing named entities in traditional Chinese ancient texts, with the F1 value about 4% higher than that of the baseline model RoBERTa; and in the task of sentence breaks in simplified Chinese ancient texts, the F1 value of Guji is about 4% higher than that of the baseline model RoBERTa. On the task of sentence breaking in simplified Chinese, GuwenBERT achieves the best performance, with an F1 value of 93.73%; on the mixed corpus of traditional Chinese and simplified Chinese, GujiBERT_jian_fan achieves the best performance, with an F1 value of 97.02%.
+
+| training corpus | models | P(%) | R(%) | F1(%) |
+| :----------------: | :----------: | :---------: | :---------: | :---------: |
+| traditional | GujiBERT_fan | 92.8 | 94.28 | 93.53 | 
+| traditional	| GujiRoBERTa_fan | 92.71 | 93.92 | 93.3 | 
+| traditional	| SikuBERT | 92.5 | 93.92 | 93.2 | 
+| traditional	| SikuRoBERTa | 92.43 | 93.73 | 93.07 | 
+| traditional	| BERT-base-Chinese | 90.16 | 92.12 | 91.12 | 
+| traditional	| Chinese-Roberta-wwm-ext | 88.86 | 90.65 | 89.75 | 
+| simplified	| GujiBERT_jian | 91.93 | 93.55 | 92.73 | 
+| simplified	| GujiRoBERTa_jian | 91.7 | 93.39 | 92.53 | 
+| simplified	| BERT-base-Chinese | 87.36	89.82	88.57 | 
+| simplified	| Chinese-Roberta-wwm-ext | 88.37	90.39	89.37 | 
+| simplified	| GuwenBERT | 92.84 | 94.66 | 93.73 | 
+| simplified + traditional | GujiBERT_jian_fan | 97.65 | 97.29 | 97.02 | 
+| simplified + traditional | GujiRoBERTa_jian_fan | 95.91 | 96.78 | 96.34 | 
+| simplified + traditional | BERT-base-Chinese | 95.75 | 96.53 | 96.14 | 
+| simplified + traditional | Chinese-Roberta-wwm-ext | 94 | 95.33 | 94.66 | 
+| simplified + traditional | RoBERTa-classical-Chinese-base-char | 94.76 | 94.83 | 94.76 | 
+
 |  pretrained models  | P(%) | R(%) | F1-score(%) |
 | :----------------: | :----------: | :---------: | :---------: |
 | SikuBERT | 90.52 | 90.93 | 90.69 |
