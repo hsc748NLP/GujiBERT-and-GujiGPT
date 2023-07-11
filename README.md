@@ -29,6 +29,27 @@ In this study, we utilize the named entity recognition corpus of the Shiji to fi
 
 | training corpus | models | P(%) | R(%) | F1(%) |
 | :----------------: | :----------: | :---------: | :---------: | :---------: |
+| traditional | GujiBERT_fan | 90.49 | 91.03 | 90.74 | 
+| traditional | GujiRoberta_fan | 90.47 | 91.02 | 90.73 | 
+| traditional | SikuBERT | 90.48 | 90.98 | 90.68 | 
+| traditional | SikuRoBERTa | 90.21 | 90.87 | 90.52 | 
+| traditional | Bert-base-Chinese | 89.62	90.36	89.93 | 
+| traditional | Chinese-RoBERTa-wwm-ext | 88.96 | 89.95 | 89.43 | 
+| simplified | GujiBERT_jian | 90.66 | 91.25 | 90.94 | 
+| simplified | GujiRoberta_jian | 90.04 | 90.72 | 90.36 | 
+| simplified | Bert-base-Chinese | 89.75 | 90.49 | 90.07 | 
+| simplified | Chinese-Roberta-wwm-ext | 89.17 | 90.07 | 89.6 | 
+| simplified | GuwenBERT | 90.56 | 91.27 | 90.89 | 
+| simplified + traditional | GujiBERT_jian_fan | 93.76 | 93.83 | 93.76 | 
+| simplified + traditional | GujiRoberta_jian_fan | 93.22 | 93.48 | 93.3 | 
+| simplified + traditional | Bert-base-Chinese | 93.05 | 93.36 | 93.16 | 
+| simplified + traditional | Chinese-Roberta-wwm-ext | 92.37 | 92.76 | 92.54 | 
+| simplified + traditional | RoBERTa-classical-Chinese-base-char | 92.56 | 92.64 | 92.58 | 
+
+### Segmentation and Lexical Labeling
+In the process of constructing the base language model for intelligent information processing of ancient books, the quality of participle and lexical annotation has a key impact on text mining, knowledge graph presentation, and named entity recognition of classics. In this study, based on the corpus of Zuozhuan, the base model is fine-tuned, trained, and tested in order to construct an integrated labeling model of ancient Chinese participle and lexical annotation. The corpus of Zuozhuan is created and released by the Chinese information processing research team led by Prof. Chen of Nanjing Normal University, which consists of about 180,000 words, uses 17 kinds of classical markers designed by themselves, and has been proofread for four times, so that the quality of the corpus is guaranteed. In this study, the database is divided into three types of datasets: traditional Chinese characters, simplified Chinese characters, and mixed simplified and traditional Chinese characters, to explore the performance of each base model in the three types of datasets, and the test results are shown in follow.
+| training corpus | models | P(%) | R(%) | F1(%) |
+| :----------------: | :----------: | :---------: | :---------: | :---------: |
 | traditional | GujiBERT_fan | 92.8 | 94.28 | 93.53 | 
 | traditional	| GujiRoBERTa_fan | 92.71 | 93.92 | 93.3 | 
 | traditional	| SikuBERT | 92.5 | 93.92 | 93.2 | 
@@ -46,28 +67,28 @@ In this study, we utilize the named entity recognition corpus of the Shiji to fi
 | simplified + traditional | Chinese-Roberta-wwm-ext | 94 | 95.33 | 94.66 | 
 | simplified + traditional | RoBERTa-classical-Chinese-base-char | 94.76 | 94.83 | 94.76 | 
 
-|  pretrained models  | P(%) | R(%) | F1-score(%) |
-| :----------------: | :----------: | :---------: | :---------: |
-| SikuBERT | 90.52 | 90.93 | 90.69 |
-| GujiBERT | 90.68 | 91.10 | 90.85 |
-
-### Broken sentences
-|  pretrained models  | P(%) | R(%) | F1-score(%) |
-| :----------------: | :----------: | :---------: | :---------: |
-| SikuBERT | 75.00 | 75.59 | 75.29 |
-| GujiBERT | 76.39 | 77.73 | 77.06 |
-
-### Named entity recognition
-|  pretrained models  | P(%) | R(%) | F1-score(%) |
-| :----------------: | :----------: | :---------: | :---------: |
-| SikuBERT | 89.35 | 89.94 | 89.63 |
-| GujiBERT | 90.44 | 90.42 | 90.34 |
-
-### Machine translation
-|  pretrained models  | BLEU-1 | BLEU-2 | BLEU-3 | BLEU-4 |
+### Sentences Breaking
+The texts recorded in the original classics usually do not have punctuation marks. Sentence breaking aims at adding sentence separators to unpunctuated ancient texts, which not only enhances the readability of the ancient Chinese texts, but also guarantees the processing of different levels of textual information.
+In this study, we utilize the corpus of the Twenty-Four Histories to fine-tune the models, construct an ancient Chinese sentence breaking model for the automatic sentence breaking task, and test the performance of the model. The ancient Chinese corpus of the Twenty-Four Histories selected in this study is extracted from The Complete Translation of the Twenty-Four Histories compiled under the auspices of Xu Jialu and others, which has been carefully proofread by many experts and is of high quality, and the corpus contains sentence breakage markers. In this study, 300,000 sentences are selected, and the corpus is divided into training set and test set according to the ratio of 9:1, and the test results are shown in follow. It can be seen that the “Siku” and “Guji” series of models developed by our group have obvious advantages over the general models in the task of sentence breaking in traditional Chinese. The best performance is achieved by GujiRoBERTa_fan, with an F1 value of 86.31%; in the task of simplified ancient text sentence breakage, GuwenBERT achieves the best performance, and GujiRoBERTa_jian achieves the second best performance, with a difference of about 3 percentage points. This is due to the fact that GuwenBERT's base model is Chinese-BERT-wwm for the Simplified Chinese task, and the corpus on which GuwenBERT continues to be pre-trained is a large-scale Simplified Ancient Chinese, whereas GujiBERT was obtained based on SikuBERT for Traditional Ancient Chinese, and SikuBERT's stronger Traditional Ancient Chinese domain may weaken the GujiBERT's ability to deal with Simplified Ancient Chinese; on the mixed corpus of Traditional Ancient Chinese and Simplified Ancient Chinese, RoBERTa-classical-Chinese-base-char performs optimally, which is on the one hand, due to the fact that the base model of RoBERTa-classical-Chinese-base-char is GuwenBERT, on the other hand, although the Simplified Chinese and Traditional Chinese corpus in this task have the same number of characters, the Traditional Chinese has more characters with the same morphology as its Simplified form, so the total number of Simplified Chinese characters is more, which makes RoBERTa-classical-Chinese-base-char perform better. The above results also corroborate the effectiveness of continued pre-training of the model's domainization, highlighting the need for pre-training language models for traditional Chinese.
+| training corpus | models | P(%) | R(%) | F1(%) |
 | :----------------: | :----------: | :---------: | :---------: | :---------: |
-| SikuGPT | 0.765 | 0.593 | 0.488 | 0.413 |
-| GujiGPT | 0.765 | 0.593 | 0.489 | 0.413 |
+| traditional | GujiBERT_fan | 84.90 | 85.85 | 85.37 | 
+| traditional | GujiRoBERTa_fan | 85.87 | 86.75 | 86.31 | 
+| traditional | SikuBERT | 84.12 | 85.16 | 84.63 | 
+| traditional | SikuRoBERTa | 85.06 | 85.96 | 85.51 | 
+| traditional | BERT-base-Chinese | 78.78 | 79.92 | 79.35 | 
+| traditional | Chinese-RoBERTa-wwm-ext | 77.34 | 78.16 | 77.75 | 
+| simplified | GujiBERT_jian | 83.29 | 84.20 | 83.74 | 
+| simplified | GujiRoBERTa_jian | 83.47 | 84.38 | 83.92 | 
+| simplified | BERT-base-Chinese | 78.86 | 79.74 | 79.30 | 
+| simplified | Chinese-RoBERTa-wwm-ext | 77.44 | 78.15 | 77.80 | 
+| simplified | GuwenBERT | 86.96 | 87.41 | 87.18 | 
+| simplified + traditional | GujiBERT_jian_fan | 86.03 | 86.88 | 86.45 | 
+| simplified + traditional | GujiRoBERTa_jian_fan | 86.44 | 87.12 | 86.78 | 
+| simplified + traditional | BERT-base-Chinese | 80.90 | 81.76 | 81.33 | 
+| simplified + traditional | Chinese-RoBERTa-wwm-ext | 79.98 | 80.61 | 80.29 | 
+| simplified + traditional | RoBERTa-classical-Chinese-base-char | 87.65 | 88.04 | 87.85 | 
+
 
 ## How to use
 
